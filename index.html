@@ -147,7 +147,56 @@
 			</table>
 		</div>
 
+		<form method="POST" action="simpan.php">
+			<label>Tanggal</label><br /><input type="date" name="tanggal" /><br />
+			<label>Stock</label><br /><input type="number" name="stock" /><br />
+			...
+			<button type="submit">Simpan</button>
+		</form>
+
 		<script>
+			const URL_SHEET = "https://script.google.com/macros/s/AKfycbxxxxx/exec"; // Ganti dengan URL milikmu
+
+			form.addEventListener("submit", function (e) {
+				e.preventDefault();
+
+				const tanggal = document.getElementById("tanggal").value;
+				const stock = +document.getElementById("stock").value;
+				const sold = +document.getElementById("sold").value;
+				const reject = +document.getElementById("reject").value;
+				const karyawan = +document.getElementById("karyawan").value;
+				const bonus = +document.getElementById("bonus").value;
+				const total = +document.getElementById("total").value;
+				const sisa = stock - (sold + reject + karyawan + bonus);
+
+				const data = {
+					tanggal,
+					stock,
+					sold,
+					reject,
+					karyawan,
+					bonus,
+					sisa,
+					total,
+				};
+
+				fetch(URL_SHEET, {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json",
+					},
+				})
+					.then((res) => {
+						if (res.ok) {
+							alert("Data berhasil dikirim ke Google Sheets!");
+							form.reset();
+						} else {
+							alert("Gagal mengirim data!");
+						}
+					})
+					.catch((err) => alert("Terjadi error: " + err));
+			});
 			const form = document.getElementById("form-laporan");
 			const tbody = document.querySelector("#tabel-laporan tbody");
 
