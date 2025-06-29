@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Laporan Penjualan Ayam Geprek</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: "Segoe UI", sans-serif;
+			}
+
+			body {
+				background: linear-gradient(to right, #ffecd2, #fcb69f);
+				padding: 20px;
+			}
+
+			.container {
+				max-width: 600px;
+				margin: auto;
+				background: #1c1c1c;
+				padding: 25px;
+				border-radius: 10px;
+				color: white;
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+			}
+
+			h1 {
+				text-align: center;
+				color: #e67e22;
+				margin-bottom: 20px;
+			}
+
+			.form-group {
+				margin-bottom: 15px;
+			}
+
+			label {
+				display: block;
+				font-weight: bold;
+				margin-bottom: 5px;
+			}
+
+			input {
+				width: 100%;
+				padding: 10px;
+				border-radius: 6px;
+				border: 1px solid #ccc;
+				font-size: 14px;
+			}
+
+			button {
+				width: 100%;
+				padding: 12px;
+				background-color: #2ecc71;
+				color: white;
+				font-size: 16px;
+				border: none;
+				border-radius: 6px;
+				cursor: pointer;
+				margin-top: 10px;
+			}
+
+			table {
+				width: 100%;
+				margin-top: 20px;
+				border-collapse: collapse;
+				background: white;
+				color: black;
+				border-radius: 6px;
+				overflow: hidden;
+			}
+
+			th,
+			td {
+				padding: 10px;
+				border: 1px solid #ccc;
+				text-align: center;
+				font-size: 14px;
+			}
+
+			th {
+				background-color: #e67e22;
+				color: white;
+			}
+
+			@media (max-width: 600px) {
+				table {
+					display: block;
+					overflow-x: auto;
+					white-space: nowrap;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Laporan Penjualan Ayam Geprek</h1>
+			<form id="form-laporan">
+				<div class="form-group">
+					<label for="tanggal">Tanggal</label>
+					<input type="date" id="tanggal" required />
+				</div>
+				<div class="form-group">
+					<label for="stock">Stock</label>
+					<input type="number" id="stock" required />
+				</div>
+				<div class="form-group">
+					<label for="sold">Terjual</label>
+					<input type="number" id="sold" required />
+				</div>
+				<div class="form-group">
+					<label for="reject">Reject</label>
+					<input type="number" id="reject" required />
+				</div>
+				<div class="form-group">
+					<label for="karyawan">Makan Karyawan</label>
+					<input type="number" id="karyawan" required />
+				</div>
+				<div class="form-group">
+					<label for="bonus">Bonus</label>
+					<input type="number" id="bonus" required />
+				</div>
+				<div class="form-group">
+					<label for="total">Total (Rp)</label>
+					<input type="number" id="total" required />
+				</div>
+				<button type="submit">Tambah Laporan</button>
+			</form>
+
+			<table id="tabel-laporan">
+				<thead>
+					<tr>
+						<th>Tanggal</th>
+						<th>Stock</th>
+						<th>Sold</th>
+						<th>Reject</th>
+						<th>Makan Karyawan</th>
+						<th>Bonus</th>
+						<th>Sisa</th>
+						<th>Total (Rp)</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+
+		<script>
+			const form = document.getElementById("form-laporan");
+			const tbody = document.querySelector("#tabel-laporan tbody");
+
+			form.addEventListener("submit", function (e) {
+				e.preventDefault();
+				const tanggal = document.getElementById("tanggal").value;
+				const stock = parseInt(document.getElementById("stock").value);
+				const sold = parseInt(document.getElementById("sold").value);
+				const reject = parseInt(document.getElementById("reject").value);
+				const karyawan = parseInt(document.getElementById("karyawan").value);
+				const bonus = parseInt(document.getElementById("bonus").value);
+				const total = parseInt(document.getElementById("total").value);
+				const sisa = stock - (sold + reject + karyawan + bonus);
+
+				const row = document.createElement("tr");
+				row.innerHTML = `
+        <td>${tanggal}</td>
+        <td>${stock}</td>
+        <td>${sold}</td>
+        <td>${reject}</td>
+        <td>${karyawan}</td>
+        <td>${bonus}</td>
+        <td>${sisa}</td>
+        <td>${total.toLocaleString()}</td>
+      `;
+				tbody.appendChild(row);
+				form.reset();
+			});
+		</script>
+	</body>
+</html>
