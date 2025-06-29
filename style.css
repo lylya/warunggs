@@ -1,0 +1,162 @@
+/* Reset dasar */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Segoe UI", sans-serif;
+}
+
+body {
+	background: linear-gradient(to right, #e4db3d, #e75640);
+	padding: 20px;
+}
+
+/* Container */
+.container {
+	max-width: 1100px;
+	margin: auto;
+	background: #fff;
+	padding: 30px;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Judul */
+h1 {
+	text-align: center;
+	color: #e67e22;
+	margin-bottom: 25px;
+}
+
+/* Select cabang */
+.cab-select {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.cab-select select,
+.cab-select input,
+.cab-select button {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	font-size: 14px;
+}
+
+.cab-select button {
+	background-color: #e67e22;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.cab-select button:hover {
+	background-color: #cf711c;
+}
+
+/* Form input */
+form {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: 12px;
+	margin-bottom: 20px;
+}
+
+form input {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+}
+
+form button {
+	grid-column: span 2;
+	background-color: #2ecc71;
+	border: none;
+	color: white;
+	padding: 12px;
+	border-radius: 6px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: 0.3s ease;
+}
+
+form button:hover {
+	background-color: #27ae60;
+}
+
+/* Tabel */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+table thead {
+	background-color: #e67e22;
+	color: white;
+}
+
+table th,
+table td {
+	padding: 10px;
+	border: 1px solid #f0f0f0;
+	text-align: center;
+	font-size: 14px;
+}
+
+table tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+#label-cabang-terpilih {
+	font-weight: bold;
+	color: #333;
+	font-size: 16px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-bottom: 20px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group label {
+	font-weight: bold;
+	margin-bottom: 6px;
+	font-size: 15px;
+}
+
+.form-group input {
+	padding: 10px;
+	font-size: 14px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	outline: none;
+}
+form button {
+	padding: 12px;
+	font-size: 16px;
+	border: none;
+	border-radius: 6px;
+	background-color: #2ecc71;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+form button:hover {
+	background-color: #27ae60;
+}
